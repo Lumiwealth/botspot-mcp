@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Lumiwealth/botspot-trading",
+  "title": "BotSpot — AI Trading Bots & Backtesting",
+  "description": "AI trading bots: generate strategies, backtest, deploy live to 10+ brokers. No coding required.",
+  "repository": {
+    "url": "https://github.com/Lumiwealth/botspot-mcp",
+    "source": "github"
+  },
+  "version": "1.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.botspot.trade/mcp"
+    }
+  ]
+}
