@@ -1,0 +1,17 @@
+# Smithery configuration for BotSpot MCP Server
+# https://smithery.ai/docs/config
+
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    properties: {}
+  url: https://mcp.botspot.trade/mcp
+  description: >
+    Full-lifecycle algorithmic trading MCP server. Describe a trading strategy
+    in plain English, AI generates the code, backtest on real historical data,
+    and deploy live to 10+ brokers including Schwab, Interactive Brokers,
+    Alpaca, Tradier, Coinbase, Binance, and Kraken. Supports stocks, options,
+    crypto, futures, and prediction markets. 32 tools covering strategy
+    generation, backtesting, deployment, monitoring, and marketplace. Free
+    tier available. Built on Lumibot (1,300+ GitHub stars).
