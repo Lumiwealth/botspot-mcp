@@ -7,6 +7,15 @@ ENDPOINT = 'https://mcp.botspot.trade/mcp'
 
 
 class DistributionContracts(unittest.TestCase):
+    def test_registry_metadata_preserves_identity_and_current_access(self):
+        server = json.loads((ROOT / 'server.json').read_text())
+        self.assertEqual(server['name'], 'io.github.grzesir/botspot-trading')
+        self.assertEqual(server['remotes'], [{'type': 'streamable-http', 'url': ENDPOINT}])
+        self.assertEqual(server['repository']['url'], 'https://github.com/Lumiwealth/botspot-mcp')
+        self.assertLessEqual(len(server['description']), 100)
+        self.assertIn('paid', server['description'].lower())
+        self.assertNotIn('free', server['description'].lower())
+
     def test_openai_public_summary_meets_submission_limit(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())
         summary = manifest['extensions']['com.openai']['interface']['shortDescription']
