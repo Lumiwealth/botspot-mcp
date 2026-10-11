@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "botspot",
+  "version": "1.0.0",
+  "description": "Connect your AI assistant to BotSpot for LumiBot strategies, historical backtests and bot monitoring.",
+  "author": {
+    "name": "Lumiwealth",
+    "email": "contact@botspot.trade",
+    "url": "https://botspot.trade"
+  },
+  "homepage": "https://botspot.trade/agents",
+  "repository": "https://github.com/Lumiwealth/botspot-mcp",
+  "license": "LicenseRef-BotSpot-Connection-Config",
+  "keywords": [
+    "botspot",
+    "lumibot",
+    "lumiwealth"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "BotSpot",
+        "shortDescription": "Build strategies and analyze backtests",
+        "longDescription": "Connect to your own BotSpot account to create and edit LumiBot strategies, run historical backtests, analyze artifacts and monitor bots. A paid BotSpot plan is required. The current direct MCP also exposes financial execution capabilities and is not yet qualified for public directories that prohibit them.",
+        "developerName": "Lumiwealth",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://botspot.trade",
+        "supportURL": "https://botspot.trade/contact",
+        "privacyPolicyURL": "https://botspot.trade/privacy",
+        "termsOfServiceURL": "https://botspot.trade/terms",
+        "logo": "./assets/botspot.png",
+        "composerIcon": "./assets/botspot.png"
+      }
+    }
+  }
+}

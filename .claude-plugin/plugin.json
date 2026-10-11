@@ -1,0 +1,19 @@
+{
+  "name": "botspot",
+  "version": "1.0.0",
+  "description": "Connect your AI assistant to BotSpot for LumiBot strategies, historical backtests and bot monitoring.",
+  "author": {
+    "name": "Lumiwealth",
+    "email": "contact@botspot.trade",
+    "url": "https://botspot.trade"
+  },
+  "homepage": "https://botspot.trade/agents",
+  "repository": "https://github.com/Lumiwealth/botspot-mcp",
+  "license": "LicenseRef-BotSpot-Connection-Config",
+  "keywords": [
+    "botspot",
+    "lumibot",
+    "lumiwealth"
+  ],
+  "mcpServers": "./.mcp.json"
+}

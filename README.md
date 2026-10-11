@@ -1,122 +1,80 @@
-# BotSpot MCP Server — AI Trading Bots & Backtesting
+# BotSpot: strategies, backtests and bot monitoring
 
-[![MCP Server](https://img.shields.io/badge/MCP-Server-blue)](https://mcp.botspot.trade/mcp)
-[![Website](https://img.shields.io/badge/Website-botspot.trade-green)](https://botspot.trade)
-[![Lumibot](https://img.shields.io/badge/Built%20on-Lumibot-orange)](https://github.com/Lumiwealth/lumibot)
+Connect your AI assistant to your own [BotSpot](https://botspot.trade) account. Create and edit [LumiBot](https://github.com/Lumiwealth/lumibot) strategies, run historical backtests, analyze results and monitor bots.
 
-**The only AI trading MCP server that takes you from strategy idea to live bot in one conversation.**
+**A paid BotSpot plan is required.** Check [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
 
-Generate trading strategies from plain English, backtest on real historical data, and deploy live to 10+ brokers. No coding required. Stocks, options, crypto, and futures.
+## Connect
 
-## Quick Start
+Use the Streamable HTTP endpoint **`https://mcp.botspot.trade/mcp`**. Sign in through BotSpot OAuth. Never paste credentials into a chat or commit them to a repository.
 
-### Claude (Settings > Connectors)
-1. Open Claude **Settings > Connectors**
-2. Click **Add custom connector**
-3. Paste: `https://mcp.botspot.trade`
-4. Click **Connect** and complete OAuth login
+### Claude
 
-### ChatGPT (Developer Mode)
-1. Open ChatGPT **Settings > Connectors > Advanced > Developer Mode**
-2. Go to **Connectors > Create**
-3. Paste: `https://mcp.botspot.trade/mcp/public`
-4. Complete OAuth login
+Open **Customize → Connectors → Add custom connector**. Name it BotSpot, enter the endpoint above and complete sign-in. This is a custom connection; it does not establish a public directory listing.
 
-### Claude Code (CLI)
-```bash
-claude mcp add --transport http botspot https://mcp.botspot.trade/mcp \
-  -H "Authorization: Bearer botspot_YOUR_API_KEY"
+### Claude Code
+
+```sh
+claude mcp add --transport http botspot https://mcp.botspot.trade/mcp
 ```
 
+Run `/mcp` to finish OAuth sign-in. The repository also includes a Claude-compatible plugin manifest and MCP configuration for plugin hosts, including Grok Build.
+
 ### Cursor
-Add to `.cursor/mcp.json`:
+
+Add this to your MCP configuration and use Cursor's sign-in control:
+
 ```json
 {
   "mcpServers": {
     "botspot": {
-      "url": "https://mcp.botspot.trade/mcp",
-      "headers": {
-        "Authorization": "Bearer botspot_YOUR_API_KEY"
-      }
+      "url": "https://mcp.botspot.trade/mcp"
     }
   }
 }
 ```
 
-Get an API key at [botspot.trade/account-settings](https://botspot.trade/account-settings) (Account Settings > API Keys).
+This repository also contains a portable Agent Plugins package (`plugin.json` and `mcp.json`) for hosts supporting that standard. A marketplace application is separate from installing this configuration manually.
 
-## What You Can Do
+### ChatGPT and Codex
 
-### AI Strategy Generation
-Describe a trading strategy in plain English. The AI generates production-ready Python code using [Lumibot](https://github.com/Lumiwealth/lumibot) (1,300+ GitHub stars, MIT license).
+For a custom ChatGPT connection, open **Plugins → Add custom MCP server**, enter the endpoint above and complete OAuth. Custom connections and local plugin packages are separate from the public directory. Public OpenAI review has additional requirements, including restrictions on investment-trade execution; this current full-capability connection is not yet qualified for that listing.
 
-### Backtesting
-Run backtests with configurable date ranges, starting capital, and parameters. Query results with SQL (DuckDB). See equity curves, drawdowns, win rates, trade logs.
+For Codex CLI, add the same remote endpoint through its MCP settings and complete the normal OAuth flow. See the [official Codex MCP documentation](https://developers.openai.com/codex/mcp).
 
-### Live Deployment & Monitoring
-Deploy to 10+ supported brokers. Monitor positions, performance, and equity curves in real time.
+### Grok and Muse
 
-### Strategy Marketplace
-Browse proven community strategies with real performance data. Clone and modify.
+MCP support and public distribution differ by product. Grok Build accepts Claude-compatible plugin packages; its official marketplace requires a reviewed catalog pull request pinned to an exact public commit. Grok Bot has separate product surfaces. Muse accepts approved connectors, and its current finance policy excludes new trade-order tools. A working custom connection is not a store approval.
 
-## Supported Brokers
+## Example requests
 
-Charles Schwab, Interactive Brokers, Alpaca, Tradier, Tradeovate, Coinbase, Binance, Kraken, KuCoin, NinjaTrader
+- “List my BotSpot strategies and show the latest saved revision.”
+- “Create a simple moving-average strategy, save its files and run a historical backtest.”
+- “Open my latest backtest, report its status and summarize the available trade and performance artifacts.”
+- “Show performance and positions for my existing bot.”
 
-## Supported Assets
+Backtests are historical simulations and do not guarantee future returns. Missing data is unknown. Ask your assistant to wait for confirmed results before claiming a backtest or deployment completed.
 
-Stocks, options, crypto, futures
+## Capabilities and permissions
 
-## 32 MCP Tools
+The live server discovers its current tool list at connection time. Strategy workflows use `create_strategy` and direct file/revision tools. Backtest workflows use `start_backtest`, `backtest_status` and artifact tools. Monitoring includes deployments, broker snapshots and portfolio reports.
 
-| Category | Tools |
-|----------|-------|
-| **Strategy Generation** | `generate_strategy`, `refine_strategy`, `generation_status`, `generate_other_code` |
-| **Strategy Management** | `list_strategies`, `get_strategy`, `update_strategy`, `delete_strategy`, `get_code`, `list_revisions`, `set_strategy_revision` |
-| **Backtesting** | `start_backtest`, `stop_backtest`, `backtest_status`, `list_backtests`, `get_backtest_artifact`, `query_csv` |
-| **Deployment** | `list_deployments`, `get_deployment_logs`, `get_bot_performance`, `get_bot_positions`, `get_portfolio_series` |
-| **Visuals** | `get_strategy_visuals`, `get_backtest_visuals`, `get_backtest_chart_series` |
-| **Marketplace** | `list_public_bots`, `share_strategy`, `publish_to_marketplace`, `unpublish_from_marketplace`, `clone_strategy` |
-| **Account** | `get_account_status`, `get_tool_call_metrics` |
-| **Data** | `set_data_provider` |
+The direct connection also exposes writes, including trading and deployment actions. Account ownership, plan entitlements and product approvals apply. Connecting an account does not itself authorize a trade. Directory eligibility must be verified against the tools actually offered; do not describe this full connection as read-only.
 
-## Free Tier
+## Package and license
 
-- 10 AI messages per month
-- 2 strategy generations per month
-- 30 minutes of backtesting per month
-- No credit card required
+- `plugin.json` and `mcp.json`: portable Agent Plugins package.
+- `.claude-plugin/plugin.json` and `.mcp.json`: compatibility package for Claude-format plugin hosts.
+- `server.json`: official MCP Registry metadata.
+- `smithery.yaml` and `glama.json`: directory metadata.
+- `assets/botspot.png`: existing BotSpot brand asset, used unchanged.
 
-## Pricing
+No server executable, hooks or credentials are bundled. The host contacts `mcp.botspot.trade` and discovers BotSpot's authorization provider at `botspot.us.auth0.com`. The hosted service remains commercial; see [LICENSE](LICENSE), [privacy](https://botspot.trade/privacy), [terms](https://botspot.trade/terms) and [support](mailto:contact@botspot.trade).
 
-- **Free:** Limited usage (above)
-- **Starter:** $99/month
-- **Pro:** $199/month
-- **All Access:** $399/month
-- **Enterprise:** Custom pricing
+## Validate the package
 
-See [botspot.trade/pricing](https://botspot.trade/pricing)
+```sh
+python3 -m unittest discover -s tests -v
+```
 
-## Technical Details
-
-- **Transport:** Streamable HTTP (JSON response mode)
-- **Auth:** OAuth 2.1 with Dynamic Client Registration (browser) or API key bearer token (CLI/IDE)
-- **Endpoints:**
-  - `https://mcp.botspot.trade/mcp` — Full tool set (Claude, CLI, IDE)
-  - `https://mcp.botspot.trade/mcp/public` — Commerce-filtered (ChatGPT Apps SDK)
-- **OAuth Discovery:** `https://mcp.botspot.trade/.well-known/oauth-protected-resource`
-
-## Links
-
-- [Website](https://botspot.trade)
-- [Setup Guide](https://botspot.trade/agents)
-- [Pricing](https://botspot.trade/pricing)
-- [Marketplace](https://botspot.trade/marketplace)
-- [Enterprise](https://botspot.trade/enterprise)
-- [Lumibot Framework](https://github.com/Lumiwealth/lumibot)
-- [Privacy Policy](https://botspot.trade/privacy)
-- [Terms of Service](https://botspot.trade/terms)
-
-## License
-
-The BotSpot MCP Server is a commercial product. The underlying trading engine ([Lumibot](https://github.com/Lumiwealth/lumibot)) is open-source under the MIT license.
+[Distribution status and requirements](docs/distribution-status.md) tracks evidence separately for live, submitted, prepared and blocked destinations.

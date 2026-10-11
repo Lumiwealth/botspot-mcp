@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "botspot": {
+      "type": "http",
+      "url": "https://mcp.botspot.trade/mcp"
+    }
+  }
+}
