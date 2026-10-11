@@ -1,22 +1,38 @@
 # Distribution status — October 11, 2026
 
-A custom MCP connection, a repository, a draft application, a submission and a public directory listing are different states. Only a live listing URL plus observed installability establishes public distribution.
+A compatible MCP connection, a draft, a submitted application, approval and a working public listing are different states. Several older listings advertised retired tools and a free tier, while marketplace applications had not completed the current intake process.
 
-## Current evidence
+## Verified listings and submissions
 
-- Claude: current developer portal displayed 0 submissions in the inspected account. A July 31 email requested resubmission after closing the older review queue. A new connector draft is being prepared; not submitted.
-- OpenAI: inspected Lumiwealth project `botspot-dev-ci-evals` showed no plugin drafts. This is project-scoped evidence, not proof about every organization/project. Public review requires verified developer identity, domain verification, reviewer access, five positive and three negative cases and a demo.
-- Cursor: authenticated publisher application prepared at https://cursor.com/marketplace/publish. Submission accepts legally binding Publisher Terms; explicit confirmation is pending. Portable plugin source is now available in this repository.
-- Grok Build: official submission route is a pull request to https://github.com/xai-org/plugin-marketplace. Requires a public source SHA and regenerated catalog index. Submission preparation in progress; no live listing claimed.
-- Grok Bot: separate from Grok Build. A Grok Build catalog entry does not prove Grok Bot distribution. Investigate its own store before claiming coverage.
-- Muse: submission form at https://muse.ai/platform/submission. Its current finance policy permits financial reads but excludes new money movement and trade-order tools. Needs an eligible, honestly described tool scope, reviewer account, demo and developer terms acceptance.
-- Smithery: public search indexed https://smithery.ai/servers/rob-grzesik/botspot-trading. Direct inspection pending; search visibility does not prove a working scan or installation.
-- Official MCP Registry and Glama: prior reports claim listings; current direct verification pending. Registry read timed out during this audit, so no fresh live claim.
-- Appz: September 30 mailbox notification identifies https://appz.com/apps/botspot. Current page and ownership verification pending.
+| Destination | Current evidence | Remaining work |
+| --- | --- | --- |
+| [Cursor Directory](https://cursor.directory/plugins/botspot) | Existing community listing corrected and read back publicly. Eight malformed components replaced with one valid HTTP MCP configuration using `https://mcp.botspot.trade/mcp`. Description, paid-plan requirement, source and homepage corrected. | Authenticated Cursor installation still needs qualification. Community listing does not establish acceptance into the curated marketplace. |
+| [Grok Build](https://github.com/xai-org/plugin-marketplace/pull/1376) | Catalog PR submitted, source pinned to `a15962339cf94f903c51d9c352c1ed52ebef5915`. Official catalog validator and generated-index check passed. | Maintainer review and merge. Does not prove availability in every Grok product. |
+| [MCP Market](https://mcpmarket.com/submit) | Free submission accepted; success message estimates a 4–6 week queue. | Editorial review and live listing. No priority fee purchased. |
+| [Cline](https://github.com/cline/mcp-marketplace/issues/1352) | Existing submission corrected; duplicate issue 1316 closed with a pointer to the canonical submission. | Cline-assisted installation qualification and required icon size; maintainer approval. No false installation-test attestation. |
+| [Smithery](https://smithery.ai/servers/rob-grzesik/botspot-trading) | Owner updated title, description, homepage and source. New registration uses `/mcp` and discovers OAuth metadata. | Scanner requires authorization to discover tools. Public page still reports no capabilities/deployments. Use dedicated reviewer access, not customer credentials. |
+| [Glama](https://glama.ai/mcp/connectors/io.github.grzesir/botspot-trading) | Existing listing observed live as unhealthy, with OAuth not checked. Correction report submitted through listing UI. | Ownership requires domain proof. Metadata and authenticated health remain unresolved; a report is not a repaired listing. |
 
-## Eligibility blocker
+## Prepared applications with blockers
 
-The live MCP protected-resource discovery currently advertises `place_trade` and `start_deployment`, alongside research, file editing, backtests and monitoring. OpenAI, Anthropic and Muse restrict financial execution in their public directories. Package metadata cannot turn the existing full server into a limited connector. Do not make unsupported compliance attestations or hide tools with runtime intent filters. Any eligible integration must use real, explicit authorization boundaries and preserve the existing direct integration.
+- **Claude:** current developer portal displayed zero submissions in the inspected account. A July 31 message closed the older queue and requested resubmission. New connector fields prepared, not submitted. Financial-execution restrictions, reviewer access, testing and compliance attestations remain unresolved.
+- **ChatGPT / OpenAI / Codex:** inspected BotSpot project displayed no plugin drafts. Upload blocked by a developer-identity gate, even though verification shows an approved individual identity. Resolve this portal inconsistency before assuming new identity submission is necessary. Review also needs domain verification, dedicated reviewer access, demo, five positive and three negative cases, and eligible financial scope. Local package tests do not establish store compliance or approval.
+- **Cursor curated marketplace:** publisher application fields prepared, not submitted. Publisher Terms acceptance pending. Section 3.1 prohibits plugin monetization, including indirect fees; applicability to this paid hosted connector needs resolution.
+- **Muse:** connector fields prepared, not submitted. Finance policy allows financial reads but excludes initiating money movement/trade orders. Reviewer access, demo, required icon and developer terms pending. Payment answer discloses existing checkout-link capability.
+
+## Other directories
+
+- **Official MCP Registry:** known source metadata uses `io.github.grzesir/botspot-trading`, version 1.1.0. API reads timed out or were inaccessible; current public availability is unverified. Source copy still advertises old tools/free access and needs a separately qualified registry update.
+- **PulseMCP:** live search returned no BotSpot result. Site reports new submissions and listing changes paused.
+- **mcp.so:** submission page exposes a $39 fee. No purchase made.
+- **Appz:** older receipt identifies `https://appz.com/apps/botspot`; current page and ownership could not be verified.
+- **Grok Bot:** no verified separate public intake route found. Grok Build tracked separately.
+
+## Financial eligibility
+
+Live protected-resource discovery advertises `place_trade` and `start_deployment`, alongside research, file editing, backtests and monitoring. OpenAI, Anthropic and Muse restrict financial execution in their public directories. Descriptions or narrower requested OAuth scopes alone do not establish eligibility.
+
+A store-specific integration needs real authorization boundaries, tested denial of prohibited actions, dedicated reviewer access and honest paid-access disclosure. Do not hide tools with runtime intent filters, make unsupported compliance attestations, or call the full direct connector read-only. No product behavior or production deployment changed in this audit.
 
 ## Official requirements
 
@@ -25,5 +41,6 @@ The live MCP protected-resource discovery currently advertises `place_trade` and
 - Cursor: https://cursor.com/docs/reference/plugins and https://cursor.com/marketplace-publisher-terms
 - Muse: https://muse.ai/platform/docs
 - Grok Build: https://github.com/xai-org/plugin-marketplace/blob/main/CONTRIBUTING.md
+- Cline: https://github.com/cline/mcp-marketplace
 
-This file contains public product facts only. Private reviewer credentials, mail bodies and customer data belong outside source control.
+Public product facts only. Reviewer credentials, mail bodies and customer data stay outside source control. No recurring monitoring schedule attached.

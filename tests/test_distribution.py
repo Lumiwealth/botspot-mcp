@@ -7,6 +7,12 @@ ENDPOINT = 'https://mcp.botspot.trade/mcp'
 
 
 class DistributionContracts(unittest.TestCase):
+    def test_openai_public_summary_meets_submission_limit(self):
+        manifest = json.loads((ROOT / 'plugin.json').read_text())
+        summary = manifest['extensions']['com.openai']['interface']['shortDescription']
+        self.assertTrue(summary.strip())
+        self.assertLessEqual(len(summary), 30)
+
     def test_portable_plugin_has_a_remote_connection(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())
         self.assertEqual(manifest['name'], 'botspot')
