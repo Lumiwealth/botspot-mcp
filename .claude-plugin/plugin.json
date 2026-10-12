@@ -16,6 +16,6 @@
     "lumiwealth"
   ],
   "mcpServers": "./.mcp.json",
-  "icon": "assets/botspot.png",
+  "icon": "assets/botspot-directory.png",
   "privacyPolicyUrl": "https://botspot.trade/privacy"
 }
