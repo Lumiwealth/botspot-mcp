@@ -7,6 +7,20 @@ ENDPOINT = 'https://mcp.botspot.trade/mcp'
 
 
 class DistributionContracts(unittest.TestCase):
+    def test_claude_declares_its_existing_icon_and_privacy_policy(self):
+        manifest = json.loads((ROOT / '.claude-plugin/plugin.json').read_text())
+        self.assertEqual(manifest['privacyPolicyUrl'], 'https://botspot.trade/privacy')
+        icon = ROOT / manifest['icon']
+        self.assertTrue(icon.is_file())
+        import struct
+        data = icon.read_bytes()
+        self.assertEqual(data[:8], b'\x89PNG\r\n\x1a\n')
+        width, height = struct.unpack('>II', data[16:24])
+        self.assertEqual(width, height)
+        self.assertGreaterEqual(width, 512)
+        self.assertLessEqual(width, 2048)
+        self.assertLess(len(data), 2 * 1024 * 1024)
+
     def test_registry_metadata_preserves_identity_and_current_access(self):
         server = json.loads((ROOT / 'server.json').read_text())
         self.assertEqual(server['name'], 'io.github.grzesir/botspot-trading')
