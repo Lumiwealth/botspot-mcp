@@ -28,11 +28,20 @@ A compatible MCP connection, a draft, a submitted application, approval and a wo
 - **Appz:** older receipt identifies `https://appz.com/apps/botspot`; current page and ownership could not be verified.
 - **Grok Bot:** no verified separate public intake route found. Grok Build tracked separately.
 
-## Financial eligibility
+## Financial eligibility — clarified October 12, 2026
 
-Live protected-resource discovery advertises `place_trade` and `start_deployment`, alongside research, file editing, backtests and monitoring. OpenAI, Anthropic and Muse restrict financial execution in their public directories. Descriptions or narrower requested OAuth scopes alone do not establish eligibility.
+The earlier blanket statement that trading is banned in ChatGPT was too broad. OpenAI's current plugin guidelines prohibit execution of money transfers, crypto transfers and investment trades. Alpaca provides a concrete public-directory precedent for simulated trading and live-account reporting:
 
-A store-specific integration needs real authorization boundaries, tested denial of prohibited actions, dedicated reviewer access and honest paid-access disclosure. Do not hide tools with runtime intent filters, make unsupported compliance attestations, or call the full direct connector read-only. No product behavior or production deployment changed in this audit.
+| Alpaca ChatGPT plugin | Published capabilities |
+| --- | --- |
+| Paper Trading | Account/market reads and simulated order placement. |
+| Live | Live-account reporting and market research; cannot submit, modify or cancel live orders. |
+
+Sources: [Alpaca launch article, October 12](https://alpaca.markets/blog/paper-trading-and-live-portfolio-monitoring-now-available-in-chatgpt-with-alpaca/), [OpenAI's Alpaca listing](https://openai.com/business/plugins/alpaca/) and [OpenAI plugin guidelines](https://developers.openai.com/plugins/plugin-guidelines). The OpenAI listing also includes an ambiguous order-placement example while directing execution to Alpaca's own API/dashboard. Alpaca's explicit published capability limits establish the distinction; that example alone does not establish live-order permission.
+
+**BotSpot submission approach:** pursue a package for strategy development, historical backtesting, paper trading and live-account reporting. Alpaca's approval is a precedent, not a guarantee of BotSpot approval. Verify supported capabilities and enforce real authorization/account-mode boundaries before claiming eligibility. Seek specific clarification before including real-money order submission, modification/cancellation, or deployment that initiates live trading.
+
+Live BotSpot protected-resource discovery advertises `place_trade` and `start_deployment`. Descriptions or narrower requested OAuth scopes alone do not make that full connector eligible. Use dedicated reviewer access, tested denials of prohibited actions and honest paid-access disclosure. Do not hide tools with runtime intent filters or make unsupported compliance attestations. This clarification changes the submission plan, not product behavior or production deployment. Claude and Muse requirements remain separate; Alpaca's ChatGPT listing does not establish their approval.
 
 ## Official requirements
 
