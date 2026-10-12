@@ -1,5 +1,7 @@
 # Distribution status — October 11, 2026
 
+[Execution game plan](distribution-game-plan.md): preserve the direct MCP and qualify installation-specific permissions before finishing store reviews.
+
 A compatible MCP connection, a draft, a submitted application, approval and a working public listing are different states. Several older listings advertised retired tools and a free tier, while marketplace applications had not completed the current intake process.
 
 ## Verified listings and submissions
