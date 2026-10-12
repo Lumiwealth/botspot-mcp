@@ -71,3 +71,8 @@ Private mail bodies, message identifiers, browser evidence and credentials remai
 - **Additional curation rules checked:** punkpeye's standard list directs hosted-only servers to its remote list; that remote list requires a live Glama connector and endpoint checks. modelcontextprotocol/servers no longer accepts third-party listing PRs and directs them to the official Registry. wong2/awesome-mcp-servers directs submissions to mcpservers.org; it does not accept listing PRs. No duplicate or out-of-scope reference-server PR was filed.
 
 Public authentication-discovery preflight on October 12: unauthenticated initialize at https://mcp.botspot.trade/mcp returned HTTP 401 with a Bearer resource_metadata challenge; protected-resource metadata returned HTTP 200 and identified the OAuth authority. This proves public discovery behavior, not authenticated user installation or tool execution. Screenshots and private application/support identifiers remain outside source control.
+
+
+### Muse icon follow-through
+
+Rob explicitly authorized a format-only exception to the generator-only image rule for this exact Muse logo on October 12. The approved generated brand image was resized to 512x512 and PNG-compressed, without adding creative content; the final file is 136,288 bytes, below 256 KiB. The image was visually inspected. The automated upload still reports that the ChatGPT Chrome extension requires Allow access to file URLs. Native file-picker attempts did not produce a received icon in Muse. No browser permission was changed. The overview remains unsubmitted pending the actual upload and subsequent technical/review stages. The required icon is prepared; resizing is no longer a blocker.
