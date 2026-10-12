@@ -1,7 +1,7 @@
 {
   "name": "botspot",
-  "version": "1.0.1",
-  "description": "Connect your AI assistant to BotSpot for LumiBot strategies, historical backtests and bot monitoring.",
+  "version": "1.0.2",
+  "description": "Connect Claude to BotSpot for LumiBot strategies, historical backtests, bot monitoring and trading. A paid BotSpot account is required.",
   "author": {
     "name": "Lumiwealth",
     "email": "contact@botspot.trade",
@@ -17,5 +17,9 @@
   ],
   "mcpServers": "./.mcp.json",
   "icon": "assets/botspot-directory.png",
-  "privacyPolicyUrl": "https://botspot.trade/privacy"
+  "privacyPolicyUrl": "https://botspot.trade/privacy",
+  "displayName": "BotSpot",
+  "supportUrl": "https://botspot.trade/contact",
+  "documentationUrl": "https://botspot.trade/agents",
+  "termsOfServiceUrl": "https://botspot.trade/terms"
 }

@@ -10,6 +10,11 @@ class DistributionContracts(unittest.TestCase):
     def test_claude_declares_its_existing_icon_and_privacy_policy(self):
         manifest = json.loads((ROOT / '.claude-plugin/plugin.json').read_text())
         self.assertEqual(manifest['privacyPolicyUrl'], 'https://botspot.trade/privacy')
+        self.assertEqual(manifest['supportUrl'], 'https://botspot.trade/contact')
+        self.assertEqual(manifest['documentationUrl'], 'https://botspot.trade/agents')
+        self.assertEqual(manifest['displayName'], 'BotSpot')
+        self.assertIn('paid', manifest['description'].lower())
+        self.assertIn('trading', manifest['description'].lower())
         icon = ROOT / manifest['icon']
         self.assertTrue(icon.is_file())
         import struct
