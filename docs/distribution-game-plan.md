@@ -6,30 +6,32 @@ Date: October 12, 2026. This is an execution plan, not a claim that restricted g
 
 Alpaca's [October 12 ChatGPT announcement](https://alpaca.markets/blog/paper-trading-and-live-portfolio-monitoring-now-available-in-chatgpt-with-alpaca/) separates simulated order placement from live-account reporting. Its ChatGPT Live plugin cannot submit, modify or cancel live orders. Its [direct Trading MCP documentation](https://docs.alpaca.markets/us/docs/trading-api-mcp) separately supports live execution with live credentials and an explicit live-mode setting. The [official agentic repository](https://github.com/alpacahq/agentic) distributes hosted live and paper endpoint configurations for supported clients. The hosted implementation and private review agreements were not inspected, so do not claim to know Alpaca's internal enforcement mechanism or approval rationale.
 
-## Product contract
+## Product contract — simplify the first store release
 
-Keep the canonical authenticated endpoint `https://mcp.botspot.trade/mcp`, existing handler/service owners and normal direct-client capabilities. The removed `/mcp/public` route and old exposure filter stay removed. A marketplace installation receives explicit permissions under the same authentication system; direct installations retain the user's approved capabilities and normal ownership, entitlement and trading approvals.
+Keep the canonical authenticated endpoint `https://mcp.botspot.trade/mcp`, existing handler/service owners and current direct-client behavior. Do not revive `/mcp/public`, introduce a separate product backend or build a general permissions UI/engine for this distribution task.
 
-| Connection | Target capability contract |
+Use two initial connection profiles:
+
+| Connection profile | First-release contract |
 | --- | --- |
-| Direct MCP | Current authorized functionality, including permitted real-money execution. |
-| ChatGPT directory | Strategy files, historical backtests, simulated trading and live-account reporting, subject to review of each capability. |
-| Claude directory | Strategy files, backtests and reporting; verify simulated trading with Anthropic before attesting compliance. Financial-execution exceptions require written permission. |
-| Muse directory | Begin with financial reads, account reports and backtest-result analysis. Verify strategy/backtest writes and simulation separately; do not assume ChatGPT's paper-trading precedent applies. |
-| Other stores | Preserve supported direct functionality unless that destination requires a narrower grant. Disclose paid access and trading accurately. |
+| Direct MCP | Existing authorized functionality, including permitted real-money execution and normal approvals. |
+| Restricted store installation | Strategy development, historical backtesting and account/result reporting. Broker writes and deployment/schedule actions that initiate trading are unavailable. |
 
-A direct install is not an exemption from the host's own policies. Document compatible clients where execution is permitted. Store copy must not instruct the host or model to evade its rules.
+Register each restricted store's OAuth connection separately and map its verified client/installation identity to the restricted profile in server-owned configuration. Stores that accept the normal connector keep direct functionality. Do not blanket-restrict every external client, and do not infer the profile from User-Agent, app display name, a URL flag or model instructions.
 
-## Track 1 — qualify one authorization design
+Start with the shared research/backtesting profile to reduce review and engineering complexity. Broker paper orders are optional follow-through after a destination confirms they are acceptable and they materially improve activation. ChatGPT has Alpaca's published paper-order precedent; Claude and Muse require their own review. Initial store descriptions must not promise paper-order execution that has not shipped.
 
-1. Audit current OAuth issuance, registration, signed claims, refresh/revocation and every money-affecting handler. Verify deployed settings independently of GitHub source. Current Node main source can expand external scopes to the complete advertised set by default; a restricted manifest request alone does not enforce least privilege. The current request context also needs a verified installation/client identity for a permission ceiling. Do not flip a global scope-mode switch and assume legacy clients remain functional.
-2. Register dedicated store OAuth clients using supported provided-client flows where possible. Resolve the installation from verified token claims plus a trusted server-owned grant record. Client display names, User-Agent, URL query flags and caller-provided profile fields cannot establish authority. Shared static-client fallback must not erase the distinction for store connections.
-3. Apply an immutable permission ceiling for the installation, intersected with the user's permissions and subscription entitlements. Refresh, incremental scope requests and reconnects must not elevate a store connection to a full direct grant. Direct connections keep their own explicit grant and existing approvals.
-4. Enforce authorization inside the real tool/service execution path. Reads of live accounts may succeed; prohibited writes return a clear visible permission error. Validate the resolved broker/account mode, not only a caller's `paper` flag. Missing or unknown account mode denies execution. Scope checks remain real product/security controls; do not add hidden tool filters, regex intent routing or prompt-based safety as substitutes.
-5. Audit bypass paths: order placement/replacement/cancellation, liquidation, options exercise, account/broker configuration, deployment start/restart/update, schedules and background wakes, generated-code jobs, saved-secret access and credential export. A store caller must not obtain live credentials or launch work that later trades live. Carry the same authority into queued work and background execution. Raw broker credentials must stay out of model-visible responses.
-6. Inspect each reviewer's authenticated tool inventory and obtain clarification if the store requires prohibited tools to be absent rather than returning authorization errors. Do not invent an acceptable catalog contract, hide tools to pass a scan, or submit a full server as read-only. Resolve this external review boundary before broad endpoint or catalog changes.
+A direct install is not an exemption from the host's policies. Document compatible direct clients honestly; no instructions to evade platform rules or hidden route from a restricted store connection to live execution.
 
-Acceptance evidence uses synthetic users and confirmed test accounts: store reads succeed; allowed simulations succeed; live writes and indirect bypasses fail without a broker call; direct-client behavior and existing approvals are preserved; token renewal, client spoofing, connection switching, revocation and cross-user ownership tests pass. Establish red regressions before implementation. Run required Node type/unit/owning-folder contracts and exact-source cloud OAuth/browser qualification. Production deployment receives separate approval and served-source readback through the normal release playbook. No live customer trades are needed for validation.
+## Track 1 — qualify the smallest real compatibility change
+
+1. Confirm each store accepts the proposed authenticated capability contract and tool inventory before broad implementation. A trade tool returning a visible permission error may not satisfy every store's inventory requirements. Do not fake the scan result, hide tools to pass review or call the full connector read-only.
+2. Audit existing issuance, client identity, refresh and shared static-client fallback. Node main currently has a default that can expand external scopes to the full advertised set; requesting fewer manifest scopes alone is insufficient. Verify deployed configuration separately. Keep ordinary direct clients unchanged rather than globally switching scope modes.
+3. Resolve the profile from a verified signed OAuth identity plus trusted registration/configuration. Apply the small store restriction inside existing authorization and execution owners. Refresh, reconnect and incremental scope requests cannot remove it. No new scheduler, database owner, regex intent router or parallel MCP implementation.
+4. Check all execution paths: broker order writes, liquidation/exercise, mode/configuration changes, deployment starts/restarts/updates, trading schedules/background wakes, generated jobs and access to live broker secrets. Validate actual account mode; carry the originating restriction into work that runs later. Visible authorization errors are required; prompts and tool descriptions alone are insufficient.
+5. Prove restricted strategy/backtest/report workflows succeed; prohibited actions fail before a broker call; direct behavior and normal approvals remain intact; refresh, spoofed metadata, connection switching, revocation and ownership tests pass. Use synthetic users/test accounts, establish red regressions, run required Node owning-folder/type/contracts and exact-source cloud OAuth/browser checks. Production deployment remains a separate normal approval/release step.
+
+The goal is real store-compatible functionality with the smallest maintenance surface. A review-only restriction that is advertised but does not work is not a completed integration. The current task has produced a plan; these product changes have not been implemented.
 
 ## Track 2 — complete a reusable reviewer kit
 
@@ -64,15 +66,23 @@ Final publisher agreements/warranties need specific approval when presented for 
 
 ## Listing explanation
 
-Proposed ChatGPT copy, to use only after the stated capability checks pass:
+Proposed first-release copy, to use only after the stated checks pass:
 
-> Build and backtest strategies, practice with simulated trading, and review your live portfolio in ChatGPT. This connection cannot place or change real-money orders. BotSpot's direct MCP connection supports permitted live trading in compatible clients, subject to your account permissions and approvals. A paid BotSpot account is required.
+> Build and backtest strategies and review your account in ChatGPT. This connection cannot place or change brokerage orders. BotSpot's direct MCP supports permitted live trading in compatible clients, subject to your account permissions and approvals. A paid BotSpot account is required.
 
-The direct-install guide can explain setup and supported clients. Have each store review any proposed direct-connection link/copy; it must not promise that installing directly bypasses that host's policies. Muse and any read-only grant receive copy matching their own actual capabilities.
+Each store receives wording matching its actual grant. The direct-install guide explains supported clients, account setup and normal approvals. Have each store review proposed direct-connection links/copy; never promise a bypass of that host's policies.
+
+## Acquisition after installation works
+
+1. Use one canonical setup destination: supported clients, clear install/connect steps, paid-plan requirement, store limitations and direct-MCP capabilities. Provide a small set of runnable first-use prompts for strategy creation, a historical backtest and inspection of recorded results.
+2. Test the path from directory click through sign-in to the first successful useful result. Remove demonstrated onboarding failures before expanding promotion. A live listing with broken OAuth is a poor acquisition channel.
+3. Put accurate setup references in relevant LumiBot documentation and the maintained public connector repository. Reuse existing eligible directory submissions; prioritize verified discoverability over duplicate listings or paid badges.
+4. Share a tested use case through existing, appropriate developer/customer channels after release and store approval. Prepare source-backed teaching material and outreach for review; send or publish only through the separately authorized channel. New video-topic decisions use vidIQ first. No unsolicited campaigns, paid upgrades, cross-chat work or recurring schedules.
+5. Measure acquisition and retention: source-tagged visits and successful connections, first completed useful backtest/report, returning users, paid activation and retained collected contribution cash. Reconcile payment outcomes; validate identity joins and staff/synthetic exclusions before claiming conversion. Use connected first-party GSC for organic queries/pages and production-filtered analytics where coverage is verified. Installs, impressions and directory counts alone do not establish customer growth.
 
 ## Order and completion
 
-Start the scoped authorization contract and reviewer kit first. Publisher identity, upload permission and existing review replies can be resolved independently. After the security tests and normal release qualification, finish ChatGPT, Claude and Muse submissions; finish Cursor once its terms are resolved. Continue already-submitted directories using their existing application IDs.
+Start the small restricted-store compatibility contract and reviewer kit first. Publisher identity, upload permission and existing review replies can be resolved independently. After the security tests and normal release qualification, finish ChatGPT, Claude and Muse submissions; finish Cursor once its terms are resolved. Continue already-submitted directories using their existing application IDs.
 
 Maintain states separately: prepared → submitted → approved → published → installed successfully. The requested submission milestone is a verified receipt for every available, eligible free intake, plus an exact blocker for closed, paid or unsupported destinations. Distribution completion additionally requires a live listing and successful authenticated installation. Save small code/source/run/application receipts in the maintained tracker; keep private credentials and customer data out of source control. No new recurring monitoring or outreach schedule is created.
 
