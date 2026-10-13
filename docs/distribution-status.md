@@ -2,6 +2,8 @@
 
 [Execution game plan](distribution-game-plan.md): preserve the direct MCP and qualify installation-specific permissions before finishing store reviews.
 
+[October 13 execution receipt](2026-10-13_execution-handoff.md) and [reviewer kit](reviewer-kit.md) record the tested direct Dev workflow, prepared portal fields and remaining qualification/logistics. No newly approved or authenticated-installation-qualified store is claimed by those preparations.
+
 A compatible MCP connection, a draft, a submitted application, approval and a working public listing are different states. Several older listings advertised retired tools and a free tier, while marketplace applications had not completed the current intake process.
 
 ## Verified listings and submissions
