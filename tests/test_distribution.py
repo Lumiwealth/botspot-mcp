@@ -13,7 +13,9 @@ class DistributionContracts(unittest.TestCase):
         self.assertEqual(manifest['supportUrl'], 'https://botspot.trade/contact')
         self.assertEqual(manifest['documentationUrl'], 'https://botspot.trade/agents')
         self.assertEqual(manifest['displayName'], 'BotSpot')
-        self.assertIn('paid', manifest['description'].lower())
+        # Connecting is free (Rob, 2026-10-24); paid plans unlock heavier features.
+        self.assertIn('free', manifest['description'].lower())
+        self.assertNotIn('required', manifest['description'].lower())
         self.assertIn('trading', manifest['description'].lower())
         icon = ROOT / manifest['icon']
         self.assertTrue(icon.is_file())
@@ -32,8 +34,15 @@ class DistributionContracts(unittest.TestCase):
         self.assertEqual(server['remotes'], [{'type': 'streamable-http', 'url': ENDPOINT}])
         self.assertEqual(server['repository']['url'], 'https://github.com/Lumiwealth/botspot-mcp')
         self.assertLessEqual(len(server['description']), 100)
-        self.assertIn('paid', server['description'].lower())
-        self.assertNotIn('free', server['description'].lower())
+        self.assertIn('free', server['description'].lower())
+        self.assertNotIn('required', server['description'].lower())
+
+    def test_no_listing_says_a_paid_plan_is_required(self):
+        # Rob, 2026-10-24: "get rid of that copy where it says paid plan required."
+        for name in ['README.md', 'plugin.json', 'server.json', 'smithery.yaml', '.claude-plugin/plugin.json', 'glama.json']:
+            text = (ROOT / name).read_text().lower()
+            for phrase in ['paid botspot plan is required', 'paid botspot account is required', 'paid botspot account required', 'paid plan required']:
+                self.assertNotIn(phrase, text, f'{name}: {phrase}')
 
     def test_openai_public_summary_meets_submission_limit(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())

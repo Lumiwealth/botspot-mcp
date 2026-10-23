@@ -8,4 +8,4 @@ startCommand:
   description: >
     Connect your AI assistant to BotSpot to create and edit LumiBot strategies,
     run historical backtests, analyze results and monitor your bots.
-    A paid BotSpot plan is required. Broker and market-data requirements vary.
+    Connecting is free; paid plans unlock heavier features such as hosted backtests and live bots. Broker and market-data requirements vary.
