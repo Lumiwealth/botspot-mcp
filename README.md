@@ -2,7 +2,7 @@
 
 Connect your AI assistant to your own [BotSpot](https://botspot.trade) account. Create and edit [LumiBot](https://github.com/Lumiwealth/lumibot) strategies, run historical backtests, analyze results and monitor bots.
 
-**A paid BotSpot plan is required.** Check [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
+**Connecting is free.** Signing in creates a free BotSpot account with the research data tools (SEC filings, economic data, news headlines), the Marketplace and Community, plus strategy editing and API keys. Paid plans unlock heavier features such as hosted backtests, live bots and real-money trades: see [pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
 
 ## Connect
 

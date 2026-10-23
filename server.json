@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.grzesir/botspot-trading",
   "title": "BotSpot — LumiBot Strategies & Backtesting",
-  "description": "LumiBot strategy files, backtests, bot monitoring and trading. OAuth; paid BotSpot account required.",
+  "description": "LumiBot strategies, backtests, bots and trading. Free to connect (OAuth); paid plans unlock more.",
   "repository": {
     "url": "https://github.com/Lumiwealth/botspot-mcp",
     "source": "github"
