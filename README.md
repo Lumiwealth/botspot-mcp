@@ -2,7 +2,7 @@
 
 Connect your AI assistant to your own [BotSpot](https://botspot.trade) account. Create and edit [LumiBot](https://github.com/Lumiwealth/lumibot) strategies, run historical backtests, analyze results and monitor bots.
 
-**A paid BotSpot plan is required.** Check [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
+**Free to connect.** Signing in creates a free BotSpot account. Paid plans unlock heavier backtests, live bots and real-money trades; see [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
 
 ## Connect
 
@@ -45,6 +45,14 @@ For Codex CLI, add the same remote endpoint through its MCP settings and complet
 ### Grok and Muse
 
 MCP support and public distribution differ by product. Grok Build accepts Claude-compatible plugin packages; its official marketplace requires a reviewed catalog pull request pinned to an exact public commit. Grok Bot has separate product surfaces. Muse accepts approved connectors, and its current finance policy excludes new trade-order tools. A working custom connection is not a store approval.
+
+## Trading skills for your AI
+
+Free, MIT-licensed LumiBot trading skills that teach Claude Code, Codex, Cursor and other agents to write, backtest and fix strategies: [Lumiwealth/lumibot-trading-skills](https://github.com/Lumiwealth/lumibot-trading-skills).
+
+```sh
+npx skills add Lumiwealth/lumibot-trading-skills
+```
 
 ## Example requests
 

@@ -1,7 +1,7 @@
 {
   "name": "botspot",
   "version": "1.0.2",
-  "description": "Connect Claude to BotSpot for LumiBot strategies, historical backtests, bot monitoring and trading. A paid BotSpot account is required.",
+  "description": "Connect Claude to BotSpot to build LumiBot strategies, run backtests, paper trade and live trade stocks, options, crypto and futures through your own broker. Free to connect; it creates a free BotSpot account. Paid plans unlock heavier backtests and live bots.",
   "author": {
     "name": "Lumiwealth",
     "email": "contact@botspot.trade",

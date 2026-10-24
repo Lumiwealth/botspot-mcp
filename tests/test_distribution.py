@@ -13,8 +13,8 @@ class DistributionContracts(unittest.TestCase):
         self.assertEqual(manifest['supportUrl'], 'https://botspot.trade/contact')
         self.assertEqual(manifest['documentationUrl'], 'https://botspot.trade/agents')
         self.assertEqual(manifest['displayName'], 'BotSpot')
-        self.assertIn('paid', manifest['description'].lower())
-        self.assertIn('trading', manifest['description'].lower())
+        self.assertIn('free to connect', manifest['description'].lower())
+        self.assertIn('trad', manifest['description'].lower())
         icon = ROOT / manifest['icon']
         self.assertTrue(icon.is_file())
         import struct
@@ -32,8 +32,7 @@ class DistributionContracts(unittest.TestCase):
         self.assertEqual(server['remotes'], [{'type': 'streamable-http', 'url': ENDPOINT}])
         self.assertEqual(server['repository']['url'], 'https://github.com/Lumiwealth/botspot-mcp')
         self.assertLessEqual(len(server['description']), 100)
-        self.assertIn('paid', server['description'].lower())
-        self.assertNotIn('free', server['description'].lower())
+        self.assertIn('free to connect', server['description'].lower())
 
     def test_openai_public_summary_meets_submission_limit(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())
@@ -67,6 +66,23 @@ class DistributionContracts(unittest.TestCase):
             text = (ROOT / name).read_text().lower()
             for retired in ['/mcp/public', 'free tier', 'no credit card required', 'generate_strategy', 'refine_strategy']:
                 self.assertNotIn(retired, text, name)
+
+    def test_connecting_is_free_and_never_described_as_paid_only(self):
+        # Rob, 2026-10-24: connecting the MCP is free and creates a free account.
+        # Paid plans only unlock heavier features. Never say a paid plan is required to connect.
+        texts = {
+            'README.md': (ROOT / 'README.md').read_text(),
+            'smithery.yaml': (ROOT / 'smithery.yaml').read_text(),
+            'server.json': (ROOT / 'server.json').read_text(),
+            'plugin.json': (ROOT / 'plugin.json').read_text(),
+            '.claude-plugin/plugin.json': (ROOT / '.claude-plugin/plugin.json').read_text(),
+        }
+        for name, text in texts.items():
+            lower = text.lower()
+            for banned in ['paid botspot plan is required', 'paid botspot account is required',
+                           'paid account required', 'paid plan required', 'paid botspot account required']:
+                self.assertNotIn(banned, lower, name)
+            self.assertIn('free', lower, name)
 
     def test_brand_asset_and_legal_metadata_are_available(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())
