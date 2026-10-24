@@ -3,3 +3,6 @@ __pycache__/
 dist/
 evidence/
 .claude/
+
+# mcp-publisher writes login tokens here
+.mcpregistry_*
