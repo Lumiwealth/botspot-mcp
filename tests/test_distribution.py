@@ -1,4 +1,7 @@
+import base64
 import json
+import re
+import urllib.parse
 from pathlib import Path
 import unittest
 
@@ -83,6 +86,26 @@ class DistributionContracts(unittest.TestCase):
                            'paid account required', 'paid plan required', 'paid botspot account required']:
                 self.assertNotIn(banned, lower, name)
             self.assertIn('free', lower, name)
+
+    def test_readme_opens_with_one_click_installs_and_a_quick_start(self):
+        # Rob, 2026-10-24: one-click install buttons at the top, a short quick
+        # start, and links to LumiBot and the trading skills repo. Install links
+        # sign in with OAuth (no key) and keep the server URL as the plain OAuth
+        # resource; the source rides in the X-BotSpot-Attribution header.
+        readme = (ROOT / 'README.md').read_text()
+        top = '\n'.join(readme.splitlines()[:20])
+        self.assertIn('https://cursor.com/en/install-mcp?name=botspot&config=', top)
+        self.assertIn('https://insiders.vscode.dev/redirect/mcp/install?name=botspot&config=', top)
+        self.assertIn('claude mcp add --transport http botspot https://mcp.botspot.trade/mcp', top)
+        self.assertNotIn('mcp.botspot.trade/mcp?', readme)
+        self.assertIn('## Quick start', readme)
+        self.assertLess(readme.index('## Quick start'), readme.index('## Connect'))
+        self.assertIn('https://github.com/Lumiwealth/lumibot', top)
+        self.assertIn('https://github.com/Lumiwealth/lumibot-trading-skills', readme)
+        for link in re.findall(r'https://cursor\.com/en/install-mcp\?name=botspot&config=([^)\s"]+)', readme):
+            config = json.loads(base64.b64decode(urllib.parse.unquote(link)))
+            self.assertEqual(config['url'], 'https://mcp.botspot.trade/mcp')
+            self.assertNotIn('Authorization', json.dumps(config))
 
     def test_brand_asset_and_legal_metadata_are_available(self):
         manifest = json.loads((ROOT / 'plugin.json').read_text())

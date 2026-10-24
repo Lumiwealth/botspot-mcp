@@ -1,8 +1,27 @@
 # BotSpot: strategies, backtests and bot monitoring
 
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=botspot&config=eyJ1cmwiOiJodHRwczovL21jcC5ib3RzcG90LnRyYWRlL21jcCIsImhlYWRlcnMiOnsiWC1Cb3RTcG90LUF0dHJpYnV0aW9uIjoidXRtX3NvdXJjZT1naXRodWImdXRtX21lZGl1bT1yZWFkbWUmdXRtX2NhbXBhaWduPWJvdHNwb3RfbWNwIn19)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_BotSpot-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=botspot&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.botspot.trade%2Fmcp%22%2C%22headers%22%3A%7B%22X-BotSpot-Attribution%22%3A%22utm_source%3Dgithub%26utm_medium%3Dreadme%26utm_campaign%3Dbotspot_mcp%22%7D%7D)
+[![Add to Claude](https://img.shields.io/badge/Claude-Add_connector-D97757?style=flat-square&logo=anthropic&logoColor=white)](#claude)
+
+Claude Code, one command:
+
+```sh
+claude mcp add --transport http botspot https://mcp.botspot.trade/mcp
+```
+
 Connect your AI assistant to your own [BotSpot](https://botspot.trade) account. Create and edit [LumiBot](https://github.com/Lumiwealth/lumibot) strategies, run historical backtests, analyze results and monitor bots.
 
-**Free to connect.** Signing in creates a free BotSpot account. Paid plans unlock heavier backtests, live bots and real-money trades; see [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
+**Free to connect.** Signing in creates a free BotSpot account. Paid plans unlock heavier backtests, live bots and real-money trades; see [current pricing](https://botspot.trade/pricing) and the [setup guide](https://botspot.trade/agents?utm_source=github&utm_medium=readme&utm_campaign=botspot_mcp). Broker access, data subscriptions, regional availability and account permissions depend on the workflow.
+
+## Quick start
+
+1. Click a button above, or run the Claude Code command.
+2. Sign in with BotSpot when your app asks. No API key needed; signing in creates your free account.
+3. Ask: "List my BotSpot strategies and latest completed backtests. Do not create, edit, deploy or trade."
+4. Then try: "Create a simple moving-average LumiBot strategy and run a historical backtest."
+
+Want your coding agent to write [LumiBot](https://github.com/Lumiwealth/lumibot) strategies well? Add the free [LumiBot trading skills](https://github.com/Lumiwealth/lumibot-trading-skills).
 
 ## Connect
 
