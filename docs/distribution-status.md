@@ -96,3 +96,7 @@ Rob explicitly authorized a format-only exception to the generator-only image ru
 - Current source metadata (server.json and smithery.yaml) already says connecting is free. No runtime/package configuration changed.
 - The mcpservers.org search excerpt still shows an older paid prerequisite. Its direct HTTP page returned 403, and this Codex chat has no connected browser access for owner edits. A third-party refresh remains unverified; no email, request-update form, store warranty or paid placement was submitted.
 - Validation: all ten existing distribution contracts passed locally, including free access, preserved install links and credential-free configuration.
+
+### Later November 13: normal Chrome readback
+
+The browser connector was unavailable, but Chrome's native accessible interface worked. The actual live mcpservers.org page already says **Free to connect**, so the older search excerpt is stale and does not establish a current paid prerequisite. Its documentation still showed the strategy-first README. The existing **Request update** control was used once and visibly changed to **Requested**. A reload still showed the older documentation. Refresh accepted is not refreshed-content proof; do not repeat the request or claim the new broker-first wording is served there yet. The task-created review tab was closed. No login, new grant, store warranty or outbound message was submitted.
