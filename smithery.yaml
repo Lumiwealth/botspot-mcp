@@ -6,6 +6,6 @@ startCommand:
     properties: {}
   url: https://mcp.botspot.trade/mcp
   description: >
-    Connect ChatGPT, Claude and other agents to your broker through BotSpot.
-    Review connected accounts and positions, and request trades for approval.
+    Connect your AI assistant to BotSpot to create and edit LumiBot strategies,
+    run historical backtests, analyze results and monitor your bots.
     Free to connect; signing in creates a free BotSpot account. Paid plans unlock heavier backtests, live bots and real-money trades. Broker and market-data requirements vary.

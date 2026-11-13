@@ -87,3 +87,12 @@ Public authentication-discovery preflight on October 12: unauthenticated initial
 ### Muse icon follow-through
 
 Rob explicitly authorized a format-only exception to the generator-only image rule for this exact Muse logo on October 12. The approved generated brand image was resized to 512x512 and PNG-compressed, without adding creative content; the final file is 136,288 bytes, below 256 KiB. The image was visually inspected. The automated upload still reports that the ChatGPT Chrome extension requires Allow access to file URLs. Native file-picker attempts did not produce a received icon in Muse. No browser permission was changed. The overview remains unsubmitted pending the actual upload and subsequent technical/review stages. The required icon is prepared; resizing is no longer a blocker.
+
+
+## Broker-first discovery follow-up — November 13, 2026
+
+- The README now leads with broker connection, account inspection and positions, while preserving install buttons and the canonical setup link. Free connection and paid-feature wording remain explicit.
+- The official Registry API lists version 1.1.2 with “Free to connect; OAuth.” Version 1.1.1 retains its historical paid prerequisite; immutable older versions were not changed or republished.
+- Current source metadata (server.json and smithery.yaml) already says connecting is free. No runtime/package configuration changed.
+- The mcpservers.org search excerpt still shows an older paid prerequisite. Its direct HTTP page returned 403, and this Codex chat has no connected browser access for owner edits. A third-party refresh remains unverified; no email, request-update form, store warranty or paid placement was submitted.
+- Validation: all ten existing distribution contracts passed locally, including free access, preserved install links and credential-free configuration.
